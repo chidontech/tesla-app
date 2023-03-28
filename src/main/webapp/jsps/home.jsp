@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Mylandmark.Tech- Home Page</title>
-<link href="images/LT.JPG" rel="icon">
+<title>Donnet.Tech- Home Page</title>
+
 </head>
 </head>
 <body>
-<h1 align="center">Landmark Technology - Leaders in Software Delivery and DevOps Automation</h1>
+<h1 align="center">Donnet Technology - Leaders in Software Delivery and DevOps Automation</h1>
 <h2 align="center"> Welcome to Landmark Technology.......We have a demo on DevOps E Degree with Linux and AWS  on Sunday Oct 9, 2022 at 3PM EST for our new batch. 
 	Landmark Technology Tesla web application project2. 
 	</h2>
