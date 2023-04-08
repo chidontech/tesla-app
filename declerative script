@@ -1,0 +1,52 @@
+pipeline{
+    agent{
+        label 'agent1'
+    }
+tools {
+    maven 'version_3.9.1'
+}
+    stages{
+        stage('clonecode'){
+            steps{
+                sh "echo pull the latest application code"
+                git credentialsId: 'gitbcredentails', url: 'https://github.com/chidontech/tesla-app'
+                sh "echo latest application code available"
+            }
+        }
+    
+     stage('TestBuild') {
+            steps{
+                sh "echo build the artifact if the test passed "
+                sh "mvn package"
+                sh "echo artifact successfully built "
+             }
+       }
+    
+        stage('codequalityanaylsis'){
+            steps{
+                sh "echo please run junit test cases "
+                sh "mvn sonar:sonar"
+                sh "echo test cases passed successfuly "
+            }
+        }
+        stage('UploadArtifact2Artifactory'){
+            steps{
+                sh "echo please depoly artfiacts to nexus "
+               // sh " mvn deploy -e "
+                sh "echo the artifact has been deployed to nexus successfully "
+            }
+        }
+       stage('Deploy2Prod'){
+           steps{
+        deploy adapters: [tomcat9(credentialsId: 'tomcatcridentials', path: '', url: 'http://3.142.248.18:8080/')], contextPath: null, onFailure: false, war: 'target/*war'
+            }
+       }
+      
+    }
+    post{
+        always{
+        emailext body: 'god job', subject: 'successfuly deployed', to: 'obioracd@yahoo.com'
+        }
+    }
+}
+ 
